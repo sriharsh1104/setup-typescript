@@ -3,14 +3,48 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Staking from "../Pages/Staking/Staking";
 import Settings from "../Pages/Setting/Settings";
 import Profile from "../Pages/Profile/Profile";
+import Login from "../Pages/Public/SignIn/Signin";
+import Signup from "../Pages/Public/Signup/Signup";
+import PrivateRoute from "../Authgaurd/PrivateRoutes/PrivateRoutes";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/staking" element={<Staking />} />
-      <Route path="/user-profile" element={<Profile />} />
-      <Route path="/settings" element={<Settings />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/staking"
+        element={
+          <PrivateRoute>
+            <Staking />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/user-profile"
+        element={
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/settings"
+        element={
+          <PrivateRoute>
+            <Settings />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };
