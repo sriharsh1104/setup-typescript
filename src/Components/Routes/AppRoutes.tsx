@@ -16,33 +16,33 @@ const AppRoutes = () => {
       <Route
         path="/"
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <Dashboard />
-          </PrivateRoute>
+          // </PrivateRoute>
         }
       />
       <Route
         path="/staking"
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <Staking />
-          </PrivateRoute>
+          // </PrivateRoute>
         }
       />
       <Route
         path="/user-profile"
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <Profile />
-          </PrivateRoute>
+          // </PrivateRoute>
         }
       />
       <Route
         path="/settings"
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <Settings />
-          </PrivateRoute>
+          // </PrivateRoute>
         }
       />
     </Routes>

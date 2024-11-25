@@ -1,20 +1,18 @@
-import "./App.css";
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import AppRoutes from "./Components/Routes/AppRoutes";
-import Sidebar from "./Components/Sidebar/Sidebar";
 import Header from "./Components/Header/Header";
+import Sidebar from "./Components/Sidebar/Sidebar";
+import AppRoutes from "./Components/Routes/AppRoutes";
 
 const App = () => {
   return (
     <Router>
-      <div className="app-container">
+      <div className="app-layout">
         <Header />
-        <div className="main-container">
-          <Sidebar />
-          <div className="content">
-            <AppRoutes />
-          </div>
-        </div>
+        <Sidebar />
+        <main className="main-content">
+          <AppRoutes />
+        </main>
       </div>
     </Router>
   );
