@@ -2,12 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Initial state for user data
 const initialState = {
-  firstName: "",
-  isLoggedIn: "",
-  userWalletAddress: "",
-  logoutUser:"",
-  selectedBatchForAdmin:"",
-  totalAmountForEachBatch:"",
+  userInfo: "",
 };
 
 // User Data Slice
@@ -16,35 +11,16 @@ export const userDataSlice = createSlice({
   initialState,
   reducers: {
     resetUserDataSlice: () => initialState,
-    setFirstName: (state, action) => {
-      state.firstName = action.payload;
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
     },
-    setIsLoggedIn: (state, action) => {
-      state.isLoggedIn = action.payload;
-    },
-    setUserWalletAddress: (state, action) => {
-      state.userWalletAddress = action.payload;
-    },
-    setLogoutUser: (state, action) => {
-      state.logoutUser = action.payload;
-    },
-    setSelectedBatchForAdmin: (state, action) => {
-      state.selectedBatchForAdmin = action.payload;
-    },
-    setTotalAmountForEachBatch: (state, action) => {
-      state.totalAmountForEachBatch = action.payload;
-    },
+   
   },
 });
 
 export const {
   resetUserDataSlice,
-  setFirstName,
-  setIsLoggedIn,
-  setUserWalletAddress,
-  setLogoutUser,
-  setSelectedBatchForAdmin,
-  setTotalAmountForEachBatch
+  setUserInfo,
 } = userDataSlice.actions;
 
 export default userDataSlice.reducer;

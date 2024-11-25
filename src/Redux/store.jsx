@@ -8,13 +8,14 @@ import loaderSlice from "./loader/loader";
 // Combine all reducers into a single root reducer
 const rootReducer = combineReducers({
   userDataSlice: userDataSlice,
-  loaderSlice:loaderSlice
+  loaderSlice: loaderSlice,
 });
 
 // Configuration for redux-persist to persist the Redux store
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["userData"],
 };
 
 // Create a persisted reducer with redux-persist configuration
