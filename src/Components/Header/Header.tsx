@@ -1,23 +1,77 @@
 import { useAuth } from "../Authgaurd/AuthContext";
-import { useLocation } from "react-router-dom"; // Import useLocation to check the current route
-// import "./Header.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./Header.css";
 
 const Header = () => {
-  const { isAuthenticated, logout } = useAuth(); // Access auth state and logout function
-  const location = useLocation(); // Get current route
+  const { isAuthenticated, logout } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate(); // For redirection to the profile page
+  const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
+  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
 
   // Do not display Header on Login and Signup pages
   if (location.pathname === "/login" || location.pathname === "/signup") {
     return null;
   }
 
+  const toggleDropdown = () => {
+    setDropdownOpen((prevState) => !prevState);
+  };
+
+  const handleProfileClick = () => {
+    // Redirect to profile page
+    navigate("/user-profile");
+  };
+
+  const handleLogoutClick = () => {
+    // Show logout confirmation modal
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const handleConfirmLogout = () => {
+    logout();
+    setShowModal(false);
+    navigate("/login");
+    // Close modal after logout
+  };
+
   return (
-    <header className="header">
-      <h1>App Header</h1>
-      <button onClick={logout} className="logout-btn">
-        Logout
-      </button>
-    </header>
+    <>
+      <header className="header">
+        <h1>App Header</h1>
+        <div className="dropdown">
+          <button onClick={toggleDropdown} className="dropdown-btn">
+            User
+          </button>
+          {dropdownOpen && (
+            <div className="dropdown-menu">
+              <button onClick={handleProfileClick} className="dropdown-item">
+                Profile
+              </button>
+              <button onClick={handleLogoutClick} className="dropdown-item">
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to logout?</p>
+            <button onClick={handleConfirmLogout}>Yes</button>
+            <button onClick={handleModalClose}>No</button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
