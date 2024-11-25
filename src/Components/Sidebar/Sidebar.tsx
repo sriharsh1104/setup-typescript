@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom"; // Import useLocation to check t
 import "./Sidebar.css";
 
 const Sidebar = () => {
-  const { isAuthenticated, logout } = useAuth(); // Access auth state and logout function
   const location = useLocation(); // Get current route
 
   // Do not display Sidebar on Login and Signup pages
@@ -26,13 +25,6 @@ const Sidebar = () => {
         <li>
           <Link to="/settings">Settings</Link>
         </li>
-        {isAuthenticated && (
-          <li>
-            <button onClick={logout} className="logout-btn">
-              Logout
-            </button>
-          </li>
-        )}
       </ul>
     </aside>
   );

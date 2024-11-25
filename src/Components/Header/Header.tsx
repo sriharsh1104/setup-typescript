@@ -6,9 +6,9 @@ import "./Header.css";
 const Header = () => {
   const { isAuthenticated, logout } = useAuth();
   const location = useLocation();
-  const navigate = useNavigate(); // For redirection to the profile page
-  const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
-  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
+  const navigate = useNavigate(); //
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false); 
+  const [showModal, setShowModal] = useState<boolean>(false); 
 
   // Do not display Header on Login and Signup pages
   if (location.pathname === "/login" || location.pathname === "/signup") {
