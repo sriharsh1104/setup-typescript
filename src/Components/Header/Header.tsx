@@ -39,6 +39,9 @@ const Header = () => {
     navigate("/login");
     // Close modal after logout
   };
+  const connectWallet = () => {
+    
+  };
 
   return (
     <>
@@ -59,6 +62,7 @@ const Header = () => {
             </div>
           )}
         </div>
+        <button onClick={connectWallet}>Connect</button>
       </header>
 
       {showModal && (
